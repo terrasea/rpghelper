@@ -1,6 +1,17 @@
 <polymer-element name="encounter-map">
   <template>
+    <style>
+    .hidden {
+      display: none;
+    }
+    
+    canvas {
+      width: 100%;
+      height: 50%;
+    }
+    </style>
     <div>
+      <img id="source" class="hidden">
       <canvas id="encountermap">
       
       </canvas>
