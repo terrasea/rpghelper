@@ -1,0 +1,8 @@
+name: RPGHelper
+description: A sample Polymer application
+dependencies:
+  hangouts_api: any
+  polymer: any
+transformers:
+- polymer:
+    entry_points: web/rpghelper.html
