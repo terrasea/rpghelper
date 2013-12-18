@@ -13,11 +13,11 @@ main(args) {
       if(exists) {
         new Router(server)
           ..serve('/').listen(serveFile('out/web/rpghelper.xml'))
-          ..serve('out/web/rpghelper.css').listen(serveFile('out/web/rpghelper.xml'));
+          ..serve('out/web/rpghelper.css').listen(serveFile('out/web/rpghelper.html'));
       } else {
         new Router(server)
         ..serve('/').listen(serveFile('../out/web/rpghelper.xml'))
-        ..serve('../out/web/rpghelper.css').listen(serveFile('../out/web/rpghelper.xml'));
+        ..serve('/rpghelper.css').listen(serveFile('../out/web/rpghelper.xml'));
       }
     });
   });
