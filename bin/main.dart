@@ -8,35 +8,18 @@ main(args) {
 
   HttpServer.bind('0.0.0.0', port).then((HttpServer server) {
     print("Listening on address ${server.address.address}:${port}" );
-    new Router(server).serve("/", method: "GET")
-      ..listen((request) {
-
-        new Directory('.').list().forEach((item){
-          request.response.write(item.toString());
-        }).then((val) {
-          request.response.close();
-        });
-        /*new File('../out/web/rpghelper.xml').readAsString().then((val) {
-          request.response
-          ..write("${val}")
-          ..close();
-        }, onError: (e) {
-          request.response
-            ..write("${e.toString()}")
-            ..close();
-        });*/
-
-        /*openRead().pipe(request.response).then((T) {
-          request.response
-          //..write("Hello World")
-          ..close();
-        });*/
-
-      });
-    /*new Router(server)
-      ..serve('/').listen(serveFile('../out/web/rpghelper.xml'))
-      ..serve('../out/web/rpghelper.css').listen(serveFile('../out/web/rpghelper.xml'));
-    */
+    String baseDir = "";
+    new Directory('out').exists().then((exists) {
+      if(exists) {
+        new Router(server)
+          ..serve('/').listen(serveFile('/out/web/rpghelper.xml'))
+          ..serve('/out/web/rpghelper.css').listen(serveFile('/out/web/rpghelper.xml'));
+      } else {
+        new Router(server)
+        ..serve('/').listen(serveFile('../out/web/rpghelper.xml'))
+        ..serve('../out/web/rpghelper.css').listen(serveFile('../out/web/rpghelper.xml'));
+      }
+    });
   });
 }
 
