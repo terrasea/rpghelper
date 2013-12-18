@@ -10,10 +10,12 @@ main(args) {
     print("Listening on address ${server.address.address}:${port}" );
     new Router(server).serve("/", method: "GET")
       ..listen((request) {
-        new File('../out/web/rpghelper.xml').openRead().pipe(request.response);
-        request.response
+        new File('../out/web/rpghelper.xml').openRead().pipe(request.response).then((T) {
+          request.response
           //..write("Hello World")
           ..close();
+        });
+
       });
     /*new Router(server)
       ..serve('/').listen(serveFile('../out/web/rpghelper.xml'))
