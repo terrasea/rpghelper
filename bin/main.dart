@@ -12,8 +12,8 @@ main(args) {
     new Directory('out').exists().then((exists) {
       if(exists) {
         new Router(server)
-          ..serve('/').listen(serveFile('/out/web/rpghelper.xml'))
-          ..serve('/out/web/rpghelper.css').listen(serveFile('/out/web/rpghelper.xml'));
+          ..serve('/').listen(serveFile('out/web/rpghelper.xml'))
+          ..serve('out/web/rpghelper.css').listen(serveFile('out/web/rpghelper.xml'));
       } else {
         new Router(server)
         ..serve('/').listen(serveFile('../out/web/rpghelper.xml'))
