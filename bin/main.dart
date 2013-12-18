@@ -11,7 +11,11 @@ main(args) {
     new Router(server).serve("/", method: "GET")
       ..listen((request) {
 
-        new Directory('.').list(recursive: true, followLinks: false).pipe(request.response);
+        new Directory('.').list().forEach((item){
+          request.response.write(item.toString());
+        }).then((val) {
+          request.response.close();
+        });
         /*new File('../out/web/rpghelper.xml').readAsString().then((val) {
           request.response
           ..write("${val}")
