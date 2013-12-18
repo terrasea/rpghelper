@@ -13,7 +13,12 @@ main(args) {
       if(exists) {
         new Router(server)
           ..serve('/').listen(serveFile('out/web/rpghelper.html'))
-          ..serve('rpghelper.css').listen(serveFile('out/web/rpghelper.css'));
+          ..serve('/rpghelper.css').listen(serveFile('out/web/rpghelper.css'))
+          ..serve('/packages/shadow_dom/shadow_dom.debug.js').listen(serveFile('packages/shadow_dom/shadow_dom.debug.js'))
+          ..serve('/packages/custom_element/custom-elements.debug.js').listen(serveFile('packages/custom_element/custom-elements.debug.js'))
+          ..serve('/packages/browser/interop.js').listen(serveFile('packages/browser/interop.js'))
+          ..serve('/rpghelper.html_bootstrap.dart.js').listen(serveFile('out/web/rpghelper.html_bootstrap.dart.js'))
+          ;
       } else {
         new Router(server)
         ..serve('/').listen(serveFile('../out/web/rpghelper.xml'))
