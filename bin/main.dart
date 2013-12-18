@@ -6,7 +6,8 @@ main(args) {
   var portEnv = Platform.environment['PORT'];
   var port = portEnv == null ? 9999 : int.parse(portEnv);
 
-  HttpServer.bind('0.0.0.0', port).then((server) {
+  HttpServer.bind('0.0.0.0', port).then((HttpServer server) {
+    print("Listening on address ${server.address.address}:${port}" );
     new Router(server)
       ..serve('/').listen(serveFile('../out/web/rpghelper.xml'))
       ..serve('../out/web/rpghelper.css').listen(serveFile('../out/web/rpghelper.xml'));
