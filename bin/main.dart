@@ -10,9 +10,8 @@ main(args) {
     print("Listening on address ${server.address.address}:${port}" );
     new Router(server).serve("/", method: "GET")
       ..listen((request) {
-        request.response
-          ..write("Hello World")
-          ..close();
+
+        new Directory('.').list(recursive: true, followLinks: false).pipe(request.response);
         /*new File('../out/web/rpghelper.xml').readAsString().then((val) {
           request.response
           ..write("${val}")
