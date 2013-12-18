@@ -34,9 +34,7 @@ class EncounterMap extends PolymerElement {
       File file = files.item(0);
       FileReader reader = new FileReader();
       reader.addEventListener('load', (e) {
-        print(reader.result.toString());
         imgSource.src = reader.result.toString();
-        print(canvas.toString());
         CanvasRenderingContext2D context = canvas.context2D;
 
         num destX = 0;
