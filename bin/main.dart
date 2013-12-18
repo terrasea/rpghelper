@@ -6,7 +6,7 @@ main(args) {
   var portEnv = Platform.environment['PORT'];
   var port = portEnv == null ? 9999 : int.parse(portEnv);
 
-  HttpServer.bind('0.0.0.0', port).then((HttpServer server) {
+  HttpServer.bind(InternetAddress.ANY_IP_V4, port).then((HttpServer server) {
     print("Listening on address ${server.address.address}:${port}" );
     String baseDir = "";
     new Directory('out').exists().then((exists) {
