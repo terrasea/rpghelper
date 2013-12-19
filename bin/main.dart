@@ -12,7 +12,7 @@ main(args) {
     new Directory('build').exists().then((exists) {
       if(exists) {
         new Router(server)
-          ..serve('/').listen(serveFile('out/web/rpghelper.html'))
+          ..serve('/').listen(serveFile('build/rpghelper.html'))
           ..serve('/rpghelper.css').listen(serveFile('build/rpghelper.css'))
           ..serve('/packages/shadow_dom/shadow_dom.debug.js').listen(serveFile('build/packages/shadow_dom/shadow_dom.debug.js'))
           ..serve('/packages/custom_element/custom-elements.debug.js').listen(serveFile('build/packages/custom_element/custom-elements.debug.js'))
