@@ -9,20 +9,23 @@ main(args) {
   HttpServer.bind(InternetAddress.ANY_IP_V4, port).then((HttpServer server) {
     print("Listening on address ${server.address.address}:${port}" );
     String baseDir = "";
-    new Directory('out').exists().then((exists) {
+    new Directory('build').exists().then((exists) {
       if(exists) {
         new Router(server)
           ..serve('/').listen(serveFile('out/web/rpghelper.html'))
-          ..serve('/rpghelper.css').listen(serveFile('out/web/rpghelper.css'))
-          ..serve('/packages/shadow_dom/shadow_dom.debug.js').listen(serveFile('packages/shadow_dom/shadow_dom.debug.js'))
-          ..serve('/packages/custom_element/custom-elements.debug.js').listen(serveFile('packages/custom_element/custom-elements.debug.js'))
-          ..serve('/packages/browser/interop.js').listen(serveFile('packages/browser/interop.js'))
-          ..serve('/rpghelper.html_bootstrap.dart.js').listen(serveFile('out/web/rpghelper.html_bootstrap.dart.js'))
+          ..serve('/rpghelper.css').listen(serveFile('build/rpghelper.css'))
+          ..serve('/packages/shadow_dom/shadow_dom.debug.js').listen(serveFile('build/packages/shadow_dom/shadow_dom.debug.js'))
+          ..serve('/packages/custom_element/custom-elements.debug.js').listen(serveFile('build/packages/custom_element/custom-elements.debug.js'))
+          ..serve('/packages/browser/interop.js').listen(serveFile('buildpackages/browser/interop.js'))
+          ..serve('/rpghelper.html_bootstrap.dart.js').listen(serveFile('build/rpghelper.html_bootstrap.dart.js'))
           ;
       } else {
         new Router(server)
-        ..serve('/').listen(serveFile('../out/web/rpghelper.xml'))
-        ..serve('/rpghelper.css').listen(serveFile('../out/web/rpghelper.xml'));
+        ..serve('/').listen((request) {
+          request.response
+            ..write("Something went wrong, as the build directory can't be found")
+            ..close();
+        });
       }
     });
   });
