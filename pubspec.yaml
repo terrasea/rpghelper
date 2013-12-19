@@ -2,6 +2,7 @@ name: RPGHelper
 description: A sample Polymer application
 dependencies:
   hangouts_api: any
+  mime: any
   polymer: any
   route: any
 transformers:
