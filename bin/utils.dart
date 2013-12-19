@@ -13,7 +13,9 @@ Function serveFile(String filename) {
   }
   return (HttpRequest request) {
     request.response.headers.contentType = new ContentType(type, subType);
-    new File(filename).openRead().pipe(request.response);
+    new File(filename).openRead().pipe(request.response).then((val){
+
+    });
   };
 }
 

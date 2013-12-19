@@ -8,6 +8,7 @@ import "dart:html";
 class EncounterMap extends PolymerElement {
   CanvasElement canvas;
   ImageElement imgSource;
+  FileUploadInputElement uploader;
 
 
   EncounterMap.created() : super.created();
@@ -24,11 +25,13 @@ class EncounterMap extends PolymerElement {
     });*/
     imgSource = $['source'];
     canvas = $['encountermap'];
+    uploader = $['chooser'];
+    uploader.onChange.listen(onUpload);
   }
 
 
-  void onUpload(Event e, var detail, var target) {
-    FileUploadInputElement input = e.currentTarget;
+  void onUpload(data) {
+    FileUploadInputElement input = uploader;
     FileList files = input.files;
     if(files.length > 0) {
       File file = files.item(0);
