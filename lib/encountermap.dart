@@ -38,15 +38,13 @@ class EncounterMap extends PolymerElement {
       FileReader reader = new FileReader();
       reader.addEventListener('load', (e) {
         imgSource.src = reader.result.toString();
-        CanvasRenderingContext2D context = canvas.context2D;
-
-        num destX = 0;
-        num destY = 0;
-        canvas.width = imgSource.width;
-        canvas.height = imgSource.height;
         imgSource.onLoad.listen((e) {
-          context.drawImage(imgSource, destX, destY);
+          CanvasRenderingContext2D context = canvas.context2D;
+          canvas.width = imgSource.width;
+          canvas.height = imgSource.height;
+          context.drawImage(imgSource, 0, 0);
           context.stroke();
+          print ("Context stroked");
         });
 
       });
