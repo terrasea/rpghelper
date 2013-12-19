@@ -41,8 +41,11 @@ class EncounterMap extends PolymerElement {
         num destY = 0;
         canvas.width = imgSource.width;
         canvas.height = imgSource.height;
-        context.drawImage(imgSource, destX, destY);
-        context.stroke();
+        imgSource.onLoad.listen((e) {
+          context.drawImage(imgSource, destX, destY);
+          context.stroke();
+        });
+
       });
       reader.readAsDataUrl(file);
     }
