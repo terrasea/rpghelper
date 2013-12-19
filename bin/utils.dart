@@ -18,34 +18,3 @@ Function serveFile(String filename) {
     });
   };
 }
-
-
-String getType(String filename) {
-  if(filename.endsWith('xml')) {
-    return 'application';
-  }
-  return "text";
-}
-
-
-String getSubtype(String filename) {
-  String type = "plain";
-
-  if(filename.endsWith('html')) {
-    type = "html";
-  }
-
-  if(filename.endsWith('css')) {
-    type = 'css';
-  }
-
-  if(filename.endsWith('xml')) {
-    type = "xml";
-  }
-
-  if(filename.endsWith("js")) {
-    type = "javascript";
-  }
-
-  return type;
-}

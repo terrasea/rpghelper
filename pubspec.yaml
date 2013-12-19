@@ -5,6 +5,7 @@ dependencies:
   mime: any
   polymer: any
   route: any
+  unittest: any
 transformers:
 - polymer:
     entry_points: web/rpghelper.html
