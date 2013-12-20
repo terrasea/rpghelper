@@ -10,10 +10,9 @@ main() {
   initPolymer();
   removeXParent();
 
-  setUp(addXParent);
-  tearDown(removeXParent);
-
   group("encountermap", (){
+    setUp(addXParent);
+    tearDown(removeXParent);
     test('has canvas element', (){
       new Timer(
         new Duration(milliseconds: 2500),
@@ -30,6 +29,14 @@ main() {
       new Timer(
         new Duration(milliseconds: 2500),
         expectAsync0((){
+          expect(
+            querySelector('encounter-map').shadowRoot.querySelector('input'),
+            isNotNull
+          );
+          expect(
+              querySelector('encounter-map').shadowRoot.querySelector('input'),
+              new isInstanceOf<FileUploadInputElement>()
+          );
           expect(
             querySelector('encounter-map').shadowRoot.querySelector('input').attributes['type'],
             contains('file')
