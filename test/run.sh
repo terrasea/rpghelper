@@ -11,3 +11,16 @@ fi
 
 results=$(content_shell --dump-render-tree test/index.html 2>&1)
 echo -e "$results"
+
+# check to see if DumpRenderTree tests
+# fails, since it always returns 0
+if [[ "$results" == *"Some tests failed"* ]]
+then
+    exit 1
+fi
+
+if [[ "$results" == *"Exception: "* ]]
+then
+    exit 1
+fi
+
