@@ -26,12 +26,11 @@ class EncounterMap extends PolymerElement {
     imgSource = $['source'];
     canvas = $['encountermap'];
     uploader = $['chooser'];
-    uploader.onChange.listen(onUpload);
   }
 
 
-  void onUpload(data) {
-    FileUploadInputElement input = uploader;
+  void onUpload(Event e, var details, var parent) {
+    FileUploadInputElement input = e.target;
     FileList files = input.files;
     if(files.length > 0) {
       File file = files.item(0);
@@ -44,7 +43,6 @@ class EncounterMap extends PolymerElement {
           canvas.height = imgSource.height;
           context.drawImage(imgSource, 0, 0);
           context.stroke();
-          print ("Context stroked");
         });
 
       });
