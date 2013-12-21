@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo start xvfb
+
 which content_shell
 if [[ $? -ne 0 ]]; then
     $DART_SDK/../chromium/download_contentshell.sh
