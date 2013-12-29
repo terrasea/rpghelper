@@ -1,5 +1,5 @@
 import 'package:unittest/unittest.dart';
-import 'package:unittest/html_config.dart';
+//import 'package:unittest/html_config.dart';
 import 'dart:html';
 import 'dart:async';
 import 'package:polymer/polymer.dart';
@@ -10,9 +10,10 @@ main() {
   initPolymer();
   removeXParent();
 
+  setUp(addXParent);
+  tearDown(removeXParent);
+
   group("encountermap", (){
-    setUp(addXParent);
-    tearDown(removeXParent);
     test('has canvas element', (){
       new Timer(
         new Duration(milliseconds: 2500),
