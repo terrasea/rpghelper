@@ -1,10 +1,11 @@
 import 'package:unittest/unittest.dart';
-//import 'package:unittest/html_config.dart';
+import 'package:unittest/html_config.dart';
 import 'dart:html';
 import 'dart:async';
 import 'package:polymer/polymer.dart';
 
 main() {
+  useHtmlConfiguration(true);
   // Ensure Polymer is looking for bound variables...
   addXParent();
   initPolymer();
